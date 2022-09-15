@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import { VillageAPI } from '../apis/villageAPI'
-import IVillageData from '../types/village.type'
-import { NationAPI } from '../apis/nationAPI'
-import INationData from '../types/nation.type'
+import { VillageAPI } from '../../apis/villageAPI'
+import IVillageData from '../../types/village.type'
 import { Box,Button, Collapse, IconButton, Typography, Table,TableBody, TableCell, TableContainer, TableHead,
 TableRow, Paper}
 from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {KeyboardArrowDown,KeyboardArrowUp} from '@mui/icons-material';
 import { Container } from '@mui/system';
 import DeleteIcon from '@mui/icons-material/Delete';

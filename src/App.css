@@ -59,6 +59,14 @@
   font-size: 20px;
 }
 
+.back_button{
+  border-radius: 35px !important;
+  background-color: #21b6ae !important;
+  padding: 18px 36px;
+  font-size: 20px;
+  align-self: auto;
+}
+
 ._container{
   padding: 18px 36px !important;
 }

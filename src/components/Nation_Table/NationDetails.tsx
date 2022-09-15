@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import INationData from '../types/nation.type'
-import { NationAPI } from "../apis/nationAPI"
+import INationData from '../../types/nation.type'
+import { NationAPI } from "../../apis/nationAPI"
 import PropTypes from 'prop-types'
 import { Link, useParams } from "react-router-dom"
 

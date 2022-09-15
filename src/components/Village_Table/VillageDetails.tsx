@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { VillageAPI } from "../apis/villageAPI"
-import IVillageData from '../types/village.type'
+import { VillageAPI } from "../../apis/villageAPI"
+import IVillageData from '../../types/village.type'
 import PropTypes from 'prop-types'
 import { Link, useParams } from "react-router-dom"
 

@@ -1,24 +1,20 @@
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 // import { AppBar } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
+import { Link } from 'react-router-dom'
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
+import Icon from '@mui/material/Icon';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Button } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const drawerWidth: number = 140;
 
@@ -60,8 +56,13 @@ return(
                 marginRight: '36px',
                 ...(open && { display: 'none' }),
               }}>
-                    <MenuIcon />
+                    <MenuIcon/>
                 </IconButton>
+                
+                <Button className="back_button" variant="contained">
+                    <Link to=".."><ArrowBackIcon/></Link>
+                </Button>
+
                 <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
                     <Button style={{
                         borderRadius: 35,

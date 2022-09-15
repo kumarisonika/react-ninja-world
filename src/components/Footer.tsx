@@ -7,8 +7,7 @@ return(
 <>
     <footer className="footer_class">
         <h2>This is footer</h2>
-        <Button className="button_ip" variant="contained">
-            <Link to="..">Go back</Link></Button>
+       
     </footer>
 </>
 )
