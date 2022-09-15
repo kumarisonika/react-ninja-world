@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { NationAPI } from '../apis/nationAPI'
-import INationData from '../types/nation.type'
+import { NationAPI } from '../../apis/nationAPI'
+import INationData from '../../types/nation.type'
 import { Box,Button, TextField, Collapse, IconButton, Typography, Table,TableBody, TableCell, TableContainer, TableHead,
 TableRow, Paper, DialogActions, DialogContent, DialogContentText, DialogTitle}
 from '@mui/material';
