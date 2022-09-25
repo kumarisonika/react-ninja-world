@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -46,27 +45,18 @@ function SignUp(props: any){
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="username"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="username"
+                  label="Username"
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
+             
               <Grid item xs={12}>
                 <TextField
                   required
@@ -86,6 +76,16 @@ function SignUp(props: any){
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12} >
+                <TextField
+                  required
+                  fullWidth
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
