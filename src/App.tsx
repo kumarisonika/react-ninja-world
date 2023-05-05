@@ -19,6 +19,7 @@ function App() {
 return (
 <Container maxWidth="lg" className="_container">
   <div className="App">
+    <Header/>
 
     <Routes>
       <Route path='/login' element={<Login />} />
