@@ -30,13 +30,14 @@ export default function Login() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            maxWidth:400,
           }}
         >
-          <Avatar src="naruto_avatar.jpg" sx={{ width: 150, height: 150 }} />
+          <Avatar src="naruto_avatar.jpg" sx={{ width: 100, height: 100 }} />
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>

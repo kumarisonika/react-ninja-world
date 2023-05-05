@@ -131,3 +131,8 @@
   background: #3a0ca3;
   transition: background 0s;
  }
+
+ .all-center-alignment{
+  left: 25% !important;
+  position:sticky;
+ }

@@ -143,11 +143,12 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Box sx={{
+            <Box className='all-center-alignment'
+            sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            maxWidth:300,
+            maxWidth:400,
           }}>
               <Avatar src="naruto_avatar.jpg" sx={{ width: 100, height: 100 }} />
               <Typography component="h1" variant="h5">
