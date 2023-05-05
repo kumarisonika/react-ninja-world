@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import VillageList from './components/Village_Table/VillageList';
 import VillageDetails from './components/Village_Table/VillageDetails';
@@ -11,8 +11,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import SignUp from './components/SignUp_SignIn/SignUp';
-import SignIn from './components/SignUp_SignIn/SignIn';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
 
 function App() {
 
@@ -20,11 +20,20 @@ return (
 <Container maxWidth="lg" className="_container">
   <div className="App">
 
-  <Routes>
-      <Route path='/' element={<SignIn />} />
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/home' element={<Home/>} />
-  </Routes>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/home' element={<Home />} />
+      <Route path='/' element={<Home page_name="Villages List" />} />
+      <Route path='/village'>
+        <Route index element={<VillageList />} />
+        <Route path=":id" element={<VillageDetails />} />
+      </Route>
+      <Route path='/nation'>
+        <Route index element={<NationList />} />
+        <Route path=":id" element={<NationDetails />} />
+      </Route>
+    </Routes>
 
     {/* <Container className='_container'>
       <Header />
@@ -32,17 +41,17 @@ return (
 
     <Container className='_container'>
       <Routes>
-     
+
       </Routes>
-        <Route path='/' element={<Home page_name="Villages List" />} />
-        <Route path='/village'>
-          <Route index element={<VillageList />} />
-          <Route path=":id" element={<VillageDetails />} />
-        </Route>
-        <Route path='/nation'>
-          <Route index element={<NationList />} />
-          <Route path=":id" element={<NationDetails />} />
-        </Route>
+      <Route path='/' element={<Home page_name="Villages List" />} />
+      <Route path='/village'>
+        <Route index element={<VillageList />} />
+        <Route path=":id" element={<VillageDetails />} />
+      </Route>
+      <Route path='/nation'>
+        <Route index element={<NationList />} />
+        <Route path=":id" element={<NationDetails />} />
+      </Route>
     </Container>
     <Footer /> */}
   </div>
@@ -52,5 +61,3 @@ return (
 }
 
 export default App;
-
-
