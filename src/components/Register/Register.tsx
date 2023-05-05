@@ -25,118 +25,23 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const theme = createTheme();
 
-export default function Register(props: any){
+function Register(props: any){
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [UserNameValue, setUserNameValue] = useState<string>()
+  const [EmailValue, setEmailValue] = useState<string>()
+  const [PasswordValue, setPasswordValue] = useState<string>()
+  const [ConfirmPasswordValue, setConfirmPasswordValue] = useState<string>()
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  console.log({
-  email: data.get('email'),
-  password: data.get('password'),
-  });
-  };
-
-
-  const [inputValues, setInputValue] = useState({
-  username: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  });
-
-  const [validation, setValidation] = useState({
-  username: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  });
-
-  //handle submit updates
-  function handleChange(event:any) {
-  console.log('THIS IS HANDLE')
-  const { name, value } = event.target;
-  setInputValue({ ...inputValues, [name]: value });
-  }
-
-  const checkValidation = () => {
-  let errors = validation;
-
-  //first Name validation
-  if (!inputValues.username.trim()) {
-  errors.username = "Username is required";
-  } else {
-  errors.username = "";
-  }
-
-  // email validation
-  const emailCond =
-  "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
-  if (!inputValues.email.trim()) {
-  errors.email = "Email is required";
-  } else if (!inputValues.email.match(emailCond)) {
-  errors.email = "Please ingress a valid email address";
-  } else {
-  errors.email = "";
-  }
-
-  //password validation
-  const cond1 = "/^(?=.*[a-z]).{6,20}$/";
-  const cond2 = "/^(?=.*[A-Z]).{6,20}$/";
-  const cond3 = "/^(?=.*[0-9]).{6,20}$/";
-  const password = inputValues.password;
-  if (!password) {
-  errors.password = "password is required";
-  } else if (password.length < 6) { errors.password="Password must be longer than 6 characters" ; } else if
-    (password.length>= 20) {
-    errors.password = "Password must shorter than 20 characters";
-    } else if (!password.match(cond1)) {
-    errors.password = "Password must contain at least one lowercase";
-    } else if (!password.match(cond2)) {
-    errors.password = "Password must contain at least one capital letter";
-    } else if (!password.match(cond3)) {
-    errors.password = "Password must contain at least a number";
-    } else {
-    errors.password = "";
+  const handleFormSubmit=()=>{
+    const NewObj={
+      username:UserNameValue,
+      email:EmailValue,
+      password:PasswordValue,
+      confirmpassword:ConfirmPasswordValue
     }
-
-    //matchPassword validation
-    if (!inputValues.confirmPassword) {
-    errors.confirmPassword = "Password confirmation is required";
-    } else if (inputValues.confirmPassword !== inputValues.password) {
-    errors.confirmPassword = "Password does not match confirmation password";
-    } else {
-    errors.password = "";
-    }
-
-    setValidation(errors);
-    };
-
-    useEffect(() => {
-    checkValidation();
-    }, [inputValues]);
-
-    /* const handleSubmit = (e:any) => {
-    e.preventDefault();
-    }; */
-
-    //Snackbar
-    
+    console.log(NewObj,"dsgdsfgdfg")
+  }
   
-      const [openSnackbar, setOpenSnackbar] = React.useState(false);
-    
-      const handleSnackbarClick = () => {
-        setOpenSnackbar(true);
-      };
-    
-    
-      const handleSnackbarClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpenSnackbar(false);
-      }
-
     return(
     <Container>
       <Stack>
@@ -154,34 +59,47 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
               <Typography component="h1" variant="h5">
                 Sign up
               </Typography>
-              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
+              <Box component="form" 
+              //  onSubmit={handleSubmit}
+               noValidate sx={{ mt: 2 }}>
                 <Grid container spacing={1}>
                   <Grid item xs={12}>
                     <TextField autoComplete="given-name" name="username" required fullWidth id="username"
-                      label="Username" autoFocus onChange={(e)=> handleChange(e)}
-                      value={inputValues.username}
+                      label="Username" autoFocus 
+                      onChange={(e)=> 
+                      setUserNameValue(e.target.value)
+                    }
+                      value={UserNameValue}
                       />
 
                   </Grid>
 
                   <Grid item xs={12}>
                     <TextField required fullWidth id="email" label="Email Address" name="email" autoComplete="email"
-                      onChange={(e)=> handleChange(e)}
-                      value={inputValues.email}
+                      onChange={(e)=>
+                      setEmailValue(e.target.value)
+                    }
+                      value={EmailValue}
                       />
 
                   </Grid>
                   <Grid item xs={12}>
                     <TextField required fullWidth name="password" label="Password" type="password" id="password"
-                      autoComplete="new-password" onChange={(e)=> handleChange(e)}
-                      value={inputValues.password}
+                      autoComplete="new-password" 
+                      onChange={(e)=>
+                         setPasswordValue(e.target.value)
+                      }
+                      value={PasswordValue}
 
                       />
                   </Grid>
                   <Grid item xs={12}>
                     <TextField required fullWidth id="confirmPassword" label="Confirm Password" name="confirmPassword"
-                      autoComplete="family-name" onChange={(e)=> handleChange(e)}
-                      value={inputValues.confirmPassword}
+                      autoComplete="family-name" 
+                      onChange={(e)=>
+                        setConfirmPasswordValue(e.target.value)
+                      }
+                      value={ConfirmPasswordValue}
 
                       />
                   </Grid>
@@ -190,21 +108,11 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                     label="Remember me"
                     />
                   </Grid>
-                  {/* <Grid>
-                    <Stack spacing={2} sx={{ width: '100%' }}>                      
-                      <Alert severity="info">This is an information message!</Alert>
-                    </Stack>
-                  </Grid> */}
                 </Grid>
 
-                <Button type="submit" fullWidth variant="contained" onClick={handleSnackbarClick} sx={{ mt: 3, mb: 2 }}>
+                <Button  fullWidth variant="contained" onClick={handleFormSubmit} sx={{ mt: 3, mb: 2 }}>
                   Sign Up
                 </Button>
-                <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={handleSnackbarClose}>
-                        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-                          You have been registered!
-                        </Alert>
-                </Snackbar>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
 
@@ -221,3 +129,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     </Container>
   )
 }
+
+export default Register;
+

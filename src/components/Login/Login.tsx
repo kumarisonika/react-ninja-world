@@ -9,20 +9,25 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { FormControlLabel } from '@mui/material';
+import { Checkbox } from 'antd';
 
 
 
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const [UserNameValue, setUserNameValue] = React.useState<string>()
+  const [PasswordValue, setPasswordValue] = React.useState<string>()
+  
+  const handleFormSubmit=()=>{
+    const NewObj={
+      username:UserNameValue,
+      password:PasswordValue,
+    }
+    console.log(NewObj,"dsgdsfgdfgLogin")
+  }
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,7 +46,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -51,6 +56,10 @@ export default function Login() {
               name="username"
               autoComplete="username"
               autoFocus
+              onChange={(e)=>
+                setUserNameValue(e.target.value)
+             }
+             value={UserNameValue}
             />
             <TextField
               margin="normal"
@@ -61,18 +70,17 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e)=>
+                setPasswordValue(e.target.value)
+             }
+             value={PasswordValue}
             />
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+            <FormControlLabel
+              control={<Checkbox value="remember"  />}
               label="Remember me"
-            /> */}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
+            />
+            <Button  fullWidth variant="contained" onClick={handleFormSubmit} sx={{ mt: 3, mb: 2 }}>
+                  Sign In
             </Button>
             <Grid container>
               <Grid item xs>
