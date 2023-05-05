@@ -144,17 +144,17 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
           <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            maxWidth:300,
           }}>
-              <Avatar src="naruto_avatar.jpg" sx={{ width: 150, height: 150 }} />
+              <Avatar src="naruto_avatar.jpg" sx={{ width: 100, height: 100 }} />
               <Typography component="h1" variant="h5">
                 Sign up
               </Typography>
-              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
-                <Grid container spacing={2}>
+              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
+                <Grid container spacing={1}>
                   <Grid item xs={12}>
                     <TextField autoComplete="given-name" name="username" required fullWidth id="username"
                       label="Username" autoFocus onChange={(e)=> handleChange(e)}
