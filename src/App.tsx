@@ -9,7 +9,7 @@ import { Box, AppBar, Typography, Toolbar, Button, Container } from '@mui/materi
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Footer from './components/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
