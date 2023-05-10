@@ -38,7 +38,7 @@ function Header(){
 
   return(
     <>
-     <AppBar position="static" sx={{marginBottom:5,}}>
+     <AppBar position="static" sx={{marginBottom:5, bgcolor:'white', color:'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -114,6 +114,7 @@ function Header(){
           </Box>
 
           <Box sx={{ flexGrow: 0, display:'inline-flex' }}>
+            
             <Tooltip title="Sign In">
             <Link to="/register">
               <button className='signin-btn' > 

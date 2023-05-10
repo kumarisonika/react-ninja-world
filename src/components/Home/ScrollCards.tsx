@@ -16,7 +16,7 @@ function ScrollCards({Category, ScreenLink, buttonName, CardImage}:any){
                         <CardActionArea>
                             <CardMedia component="img" height="100" image={CardImage} alt="Great Nations" />
                             <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
+                                <Typography gutterBottom variant="h6" component="div">
                                     {Category}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
