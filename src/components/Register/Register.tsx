@@ -64,13 +64,13 @@ function Register(props: any){
                noValidate sx={{ mt: 2 }}>
                 <Grid container spacing={1}>
                   <Grid item xs={12}>
-                    <TextField autoComplete="given-name" name="username" required fullWidth id="username"
+                   {/*  <TextField autoComplete="given-name" name="username" required fullWidth id="username"
                       label="Username" autoFocus 
                       onChange={(e)=> 
                       setUserNameValue(e.target.value)
                     }
                       value={UserNameValue}
-                      />
+                      /> */}
 
                   </Grid>
 
@@ -104,9 +104,9 @@ function Register(props: any){
                       />
                   </Grid>
                   <Grid item xs={12}>
-                    <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />}
+                   {/*  <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />}
                     label="Remember me"
-                    />
+                    /> */}
                   </Grid>
                 </Grid>
 

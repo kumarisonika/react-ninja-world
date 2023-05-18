@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import { useMutation } from '@tanstack/react-query';
+import { getLoginResponse } from '../../apis/loginAPI';
 
 
 
@@ -19,13 +21,33 @@ const theme = createTheme();
 export default function Login() {
   const [UserNameValue, setUserNameValue] = React.useState<string>()
   const [PasswordValue, setPasswordValue] = React.useState<string>()
+  const [ResponseData, setResponseData]= React.useState<any>()
+
+  const {
+    mutate: loginResponse,
+    isLoading,
+    error,
+  } = useMutation(getLoginResponse, {
+    onSuccess: (data: any) => {
+      // setResponseData(data);
+      alert('Success')
+    },
+    onError: () => {
+      alert('There was an errorrrrrr')
+    },
+    onSettled: () => {},
+  });
   
   const handleFormSubmit=()=>{
     const NewObj={
-      username:UserNameValue,
-      password:PasswordValue,
+      "username":UserNameValue,
+      "password":PasswordValue
     }
-    console.log(NewObj,"dsgdsfgdfgLogin")
+    console.log(NewObj,"jhdgsdgf")
+    loginResponse({
+      "username":UserNameValue,
+      "password":PasswordValue
+    })
   }
   
 
