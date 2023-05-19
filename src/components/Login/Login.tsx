@@ -33,7 +33,7 @@ export default function Login() {
       alert('Success')
     },
     onError: () => {
-      alert('There was an errorrrrrr')
+      alert('Sorry! Could not verify the Login credentials.')
     },
     onSettled: () => {},
   });
@@ -66,7 +66,7 @@ export default function Login() {
         >
           <Avatar src="naruto_avatar.jpg" sx={{ width: 100, height: 100 }} />
           <Typography component="h1" variant="h5">
-            Sign in
+            Log In
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField

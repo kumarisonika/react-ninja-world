@@ -57,7 +57,7 @@ function Header(){
               textDecoration: 'none',
             }}
           >
-            LOGO
+            SHINOBI
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -108,20 +108,20 @@ function Header(){
               textDecoration: 'none',
             }}
           >
-            LOGO
+            SHINOBI
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           </Box>
 
           <Box sx={{ flexGrow: 0, display:'inline-flex' }}>
             
-            <Tooltip title="Sign In">
+            {/* <Tooltip title="Sign Up">
             <Link to="/register">
               <button className='signin-btn' > 
-                 Sign In
+                 Sign Up
               </button>
               </Link>
-            </Tooltip>
+            </Tooltip> */}
 
             <Tooltip title="Log In">
             <Link to="/login">
