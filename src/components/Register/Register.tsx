@@ -65,7 +65,7 @@ function Register(props: any){
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   //@ts-ignore
-  const handleClickShowConfirmPassword = () => setConfirmPasswordValue((show) => !show);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show);
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
