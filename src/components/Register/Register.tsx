@@ -14,6 +14,8 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { getSignUpResponse } from '../../apis/registerAPI';
 import { useMutation } from '@tanstack/react-query';
+import { VisibilityOff, Visibility } from '@mui/icons-material';
+import { FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -25,9 +27,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 const theme = createTheme();
 
 function Register(props: any){
-  const [EmailValue, setEmailValue] = useState<string>()
+  const [EmailValue, setEmailValue] = useState<string>('Please enter your email')
   const [PasswordValue, setPasswordValue] = useState<string>()
   const [ConfirmPasswordValue, setConfirmPasswordValue] = useState<string>()
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+
 
   const {
     mutate: signupResponse,
@@ -44,11 +49,28 @@ function Register(props: any){
   });
 
   const handleFormSubmit=()=>{
-    signupResponse({
-      username:EmailValue,
-      password:PasswordValue
-    })
+    if(PasswordValue===ConfirmPasswordValue){
+      signupResponse({
+        username:EmailValue,
+        password:PasswordValue
+      })
+    }else if(!EmailValue.includes('@')){
+        alert('Please enter a valid email.')
+    }
+    else{
+      alert('Passwords dont match!')
+    }
   }
+
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  //@ts-ignore
+  const handleClickShowConfirmPassword = () => setConfirmPasswordValue((show) => !show);
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
   
     return(
     <Container>
@@ -71,17 +93,7 @@ function Register(props: any){
               //  onSubmit={handleSubmit}
                noValidate sx={{ mt: 2 }}>
                 <Grid container spacing={1}>
-                  <Grid item xs={12}>
-                   {/*  <TextField autoComplete="given-name" name="username" required fullWidth id="username"
-                      label="Username" autoFocus 
-                      onChange={(e)=> 
-                      setUserNameValue(e.target.value)
-                    }
-                      value={UserNameValue}
-                      /> */}
-
-                  </Grid>
-
+                
                   <Grid item xs={12}>
                     <TextField required fullWidth id="email" label="Email Address" name="email" autoComplete="email"
                       onChange={(e)=>
@@ -92,29 +104,60 @@ function Register(props: any){
 
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField required fullWidth name="password" label="Password" type="password" id="password"
-                      autoComplete="new-password" 
-                      onChange={(e)=>
+                      <FormControl required fullWidth variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                          id="outlined-adornment-password"
+                          type={showPassword ? 'text' : 'password'}
+                          onChange={(e)=>
                          setPasswordValue(e.target.value)
-                      }
-                      value={PasswordValue}
+                          }
+                          value={PasswordValue}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                              >
+                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                          label="Password"
+                        />
+                      </FormControl>
+                  </Grid>
 
-                      />
+
+                  <Grid item xs={12}>
+                      <FormControl required fullWidth variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
+                        <OutlinedInput
+                          id="outlined-adornment-password"
+                          type={showConfirmPassword ? 'text' : 'password'}
+                          onChange={(e)=>
+                            setConfirmPasswordValue(e.target.value)
+                          }
+                          value={ConfirmPasswordValue}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowConfirmPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                              >
+                                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                          label="Password"
+                        />
+                      </FormControl>
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField required fullWidth id="confirmPassword" label="Confirm Password" name="confirmPassword"
-                      autoComplete="family-name" 
-                      onChange={(e)=>
-                        setConfirmPasswordValue(e.target.value)
-                      }
-                      value={ConfirmPasswordValue}
-
-                      />
-                  </Grid>
-                  <Grid item xs={12}>
-                   {/*  <FormControlLabel control={<Checkbox value="allowExtraEmails" color="primary" />}
-                    label="Remember me"
-                    /> */}
                   </Grid>
                 </Grid>
 
