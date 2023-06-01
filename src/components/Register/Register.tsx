@@ -42,8 +42,8 @@ function Register(props: any){
     onSuccess: (data: any) => {
       alert('User Registered!')
     },
-    onError: () => {
-      alert('Sorry! Could not register the user.')
+    onError: (error:any) => {
+        alert(error.response.data.message)
     },
     onSettled: () => {},
   });
